@@ -505,6 +505,76 @@
             transform: translateX(0);
         }
 
+        /* Shutterstock Selector — Responsive Adjustments (mengikuti breakpoint 1024px yang sudah dipakai di situs) */
+        @media (max-width: 1024px) {
+            .shutterstock-selector {
+                height: 220px;
+            }
+
+            .ss-icon {
+                min-width: 32px;
+                max-width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
+
+            .ss-main {
+                font-size: 0.85rem;
+            }
+
+            .ss-sub {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Shutterstock Selector — Mode Tumpuk Vertikal untuk Layar Kecil (ponsel) */
+        @media (max-width: 640px) {
+            .shutterstock-selector {
+                flex-direction: column;
+                height: 480px;
+            }
+
+            .ss-option {
+                background-size: cover;
+                min-height: 40px;
+            }
+
+            .ss-option.ss-active {
+                background-size: cover;
+            }
+
+            .ss-option + .ss-option {
+                margin-left: 0;
+                margin-top: 8px;
+            }
+
+            .ss-label {
+                height: auto;
+                align-items: flex-start;
+                padding: 0 12px 14px 12px;
+            }
+
+            .ss-icon {
+                min-width: 30px;
+                max-width: 30px;
+                height: 30px;
+                font-size: 0.75rem;
+            }
+
+            .ss-info {
+                white-space: normal;
+            }
+
+            .ss-main {
+                font-size: 0.8rem;
+            }
+
+            .ss-sub {
+                font-size: 0.68rem;
+                line-height: 1.3;
+            }
+        }
+
         /* ==========================================================================
            SECTION 2: PROJECTS CYBER CORES
            ========================================================================== */
