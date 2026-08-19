@@ -386,6 +386,125 @@
             line-height: 1.6;
         }
 
+        /* Shutterstock Image Gallery Feature (Interactive Selector Style) */
+        .shutterstock-selector {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            height: 260px;
+            margin-top: 20px;
+            overflow: hidden;
+            gap: 0;
+        }
+
+        .ss-option {
+            position: relative;
+            flex: 1 1 0%;
+            min-width: 50px;
+            min-height: 100px;
+            margin: 0;
+            border-radius: 12px;
+            border: 2px solid var(--glass-border);
+            background-color: #18181b;
+            background-size: auto 120%;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: flex 0.7s var(--easing-smooth), background-size 0.7s var(--easing-smooth),
+                border-color 0.7s var(--easing-smooth), box-shadow 0.7s var(--easing-smooth);
+            will-change: flex-grow, box-shadow, background-size;
+        }
+
+        .ss-option + .ss-option {
+            margin-left: 8px;
+        }
+
+        .ss-option.ss-active {
+            flex: 5 1 0%;
+            background-size: auto 100%;
+            border-color: var(--glass-border-active);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .ss-shadow {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -40px;
+            height: 120px;
+            pointer-events: none;
+            box-shadow: inset 0 -120px 0px -120px #000, inset 0 -120px 0px -80px #000;
+            transition: all 0.7s var(--easing-smooth);
+        }
+
+        .ss-option.ss-active .ss-shadow {
+            bottom: 0;
+            box-shadow: inset 0 -120px 120px -120px #000, inset 0 -120px 120px -80px #000;
+        }
+
+        .ss-label {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            height: 44px;
+            padding: 0 14px 16px 14px;
+            width: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .ss-icon {
+            min-width: 36px;
+            max-width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(32, 32, 32, 0.85);
+            backdrop-filter: blur(10px);
+            border: 2px solid #444;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .ss-info {
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .ss-main {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateX(25px);
+            transition: all 0.7s var(--easing-smooth);
+        }
+
+        .ss-sub {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0;
+            transform: translateX(25px);
+            transition: all 0.7s var(--easing-smooth);
+        }
+
+        .ss-option.ss-active .ss-main,
+        .ss-option.ss-active .ss-sub {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         /* ==========================================================================
            SECTION 2: PROJECTS CYBER CORES
            ========================================================================== */
@@ -855,6 +974,60 @@
                         <div class="creative-media-item">
                             <a href="https://www.shutterstock.com/id/g/Celpangsitoss" target="_blank" class="creative-media-role"><i class="fa-solid fa-images"></i> Photography Contributor at Shutterstock <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i></a>
                             <p class="creative-media-desc">Capturing and publishing commercial stock photography.</p>
+
+                            <!-- FITUR GALERI SHUTTERSTOCK (gaya interactive selector): ganti setiap "background-image" pada style dan teks judul/deskripsi sesuai gambar Anda -->
+                            <div class="shutterstock-selector" id="shutterstockSelector">
+                                <div class="ss-option ss-active" onclick="selectShutterstockOption(this)" style="background-image:url('https://www.shutterstock.com/shutterstock/photos/2361829409/display_1500/stock-photo-flowers-in-the-celosia-garden-2361829409.jpg')">
+                                    <div class="ss-shadow"></div>
+                                    <div class="ss-label">
+                                        <div class="ss-icon"><i class="fa-solid fa-image"></i></div>
+                                        <div class="ss-info">
+                                            <div class="ss-main">Id Aset: 2361829409</div>
+                                            <div class="ss-sub">Kategori: Taman/Luar Ruang</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-option" onclick="selectShutterstockOption(this)" style="background-image:url('https://www.shutterstock.com/shutterstock/photos/2375049287/display_1500/stock-photo-red-celosia-flowers-in-the-garden-2375049287.jpg')">
+                                    <div class="ss-shadow"></div>
+                                    <div class="ss-label">
+                                        <div class="ss-icon"><i class="fa-solid fa-image"></i></div>
+                                        <div class="ss-info">
+                                            <div class="ss-main">Id Aset: 2375049287</div>
+                                            <div class="ss-sub">Kategori: Alam, Taman/Luar Ruang</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-option" onclick="selectShutterstockOption(this)" style="background-image:url('https://www.shutterstock.com/shutterstock/photos/2654564827/display_1500/stock-photo-vibrant-red-hibiscus-flower-in-full-bloom-with-rich-green-foliage-in-the-background-captured-in-2654564827.jpg')">
+                                    <div class="ss-shadow"></div>
+                                    <div class="ss-label">
+                                        <div class="ss-icon"><i class="fa-solid fa-image"></i></div>
+                                        <div class="ss-info">
+                                            <div class="ss-main">Id Aset: 2654564827</div>
+                                            <div class="ss-sub">Kategori: Alam, Taman/Luar Ruang</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-option" onclick="selectShutterstockOption(this)" style="background-image:url('https://www.shutterstock.com/shutterstock/photos/2361831501/display_1500/stock-photo-celosia-commonly-known-as-cockscomb-or-woolflower-2361831501.jpg')">
+                                    <div class="ss-shadow"></div>
+                                    <div class="ss-label">
+                                        <div class="ss-icon"><i class="fa-solid fa-image"></i></div>
+                                        <div class="ss-info">
+                                            <div class="ss-main">Id Aset: 2361831501</div>
+                                            <div class="ss-sub">Kategori: Alam, Taman/Luar Ruang</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-option" onclick="selectShutterstockOption(this)" style="background-image:url('https://www.shutterstock.com/shutterstock/photos/2634154073/display_1500/stock-photo-yogyakarta-indonesia-october-an-ancient-temple-stands-majestically-under-the-open-sky-2634154073.jpg')">
+                                    <div class="ss-shadow"></div>
+                                    <div class="ss-label">
+                                        <div class="ss-icon"><i class="fa-solid fa-image"></i></div>
+                                        <div class="ss-info">
+                                            <div class="ss-main">Id Aset: 2634154073</div>
+                                            <div class="ss-sub">Kategori: Alam, Gedung/Bangunan Terkenal</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1137,6 +1310,14 @@
 
         function shutLightboxView() { lightbox.classList.remove('open'); }
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) shutLightboxView(); });
+
+        // Shutterstock Interactive Selector Logic
+        function selectShutterstockOption(el) {
+            const selector = document.getElementById('shutterstockSelector');
+            if (!selector || el.classList.contains('ss-active')) return;
+            selector.querySelectorAll('.ss-option').forEach(opt => opt.classList.remove('ss-active'));
+            el.classList.add('ss-active');
+        }
 
         // Additive Typewriter
         const logsArray = [
