@@ -281,7 +281,7 @@ var cols=['#e11d2e','#ffffff','#ff5a67','#ffffff','#e11d2e','#ffd2d6','#ffffff',
 function pick(o,nx,ny){o.tx=nx!=null?nx+(Math.random()-.5)*220:Math.random()*W;o.ty=scrollY+(ny!=null?ny+(Math.random()-.5)*220:Math.random()*H);o.t=performance.now()+1400+Math.random()*3200}
 for(var i=0;i<N;i++){var o={x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,ang:0,col:cols[i%cols.length],sz:.8+Math.random()*.7,tr:[],sp:90+Math.random()*130};pick(o);S.push(o)}
 addEventListener('pointerdown',function(e){S.forEach(function(o){pick(o,e.clientX,e.clientY)})});
-var names=['Layout','Crop','Color','User'],SEL='.card,.portrait,.btn,.nums>div,.st,.chips,.jr>div,.ct a,.hero h1,.role,#tabs,.sk';
+var names=['Hello','Hi','Visitor','Welcome'],SEL='.card,.portrait,.btn,.nums>div,.st,.chips,.jr>div,.ct a,.hero h1,.role,#tabs,.sk';
 function vis(r){return r.width>40&&r.height>20&&r.top>70&&r.bottom<H-10&&r.right<=W+2}
 function ez(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
 function fin(o,now){var el=o.el;if(el){if(o.rv){el.style.clipPath='';el.style.transition='';el.classList.add('on')}el.style.scale='';el.style.transformOrigin='';el._b=0}
